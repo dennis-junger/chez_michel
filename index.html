@@ -563,8 +563,8 @@
 
     .drink-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: clamp(20px, 3vw, 34px);
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: clamp(16px, 2.5vw, 30px);
       margin-top: 40px;
     }
 
@@ -586,18 +586,17 @@
     .drink-media {
       position: relative;
       overflow: hidden;
-      aspect-ratio: 16/10;
     }
 
     .drink-media img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
+      display: block;
       transition: transform .7s var(--ease);
     }
 
     .drink-card:hover .drink-media img {
-      transform: scale(1.07);
+      transform: scale(1.03);
     }
 
     .drink-card figcaption {
@@ -1053,17 +1052,8 @@
     }
 
     @media (max-width: 640px) {
-      .drink-grid {
-        grid-template-columns: 1fr;
-      }
       .links a.hide-sm {
         display: none;
-      }
-
-      .drink-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-        grid-template-columns: 1fr;
       }
 
       .day-offer img {
@@ -1217,9 +1207,16 @@
         <figure class="drink-card reveal">
           <div class="drink-media">
             <img src="img/limo.jpg"
-              alt="Hausgemachte Limonade" />
+              alt="Eigene Limonade" />
           </div>
-          <figcaption><b>Hausgemachte Limonade</b><span>frisch &amp; selbst gemacht</span></figcaption>
+          <figcaption><b>Eigene Limonade</b><span>frisch &amp; selbst gemacht</span></figcaption>
+        </figure>
+        <figure class="drink-card reveal">
+          <div class="drink-media">
+            <img src="img/kaffee.jpg"
+              alt="Kaffeespezialitäten" />
+          </div>
+          <figcaption><b>Kaffeespezialitäten</b><span>handgepflückt aus aller Welt</span></figcaption>
         </figure>
       </div>
 
