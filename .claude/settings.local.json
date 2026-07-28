@@ -5,7 +5,9 @@
       "Bash(git fetch *)",
       "Bash(git ls-tree *)",
       "Bash(git restore *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "Bash(git add *)",
+      "Bash(git push *)"
     ]
   }
 }
