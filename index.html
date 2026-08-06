@@ -643,9 +643,11 @@
       font-size: var(--fs-h3);
       display: block;
       line-height: 1.1;
-      white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
 
     .drink-card figcaption span {
@@ -1555,6 +1557,11 @@
 
   <!-- INTERNATIONALIZATION -->
   <script>
+    const marqueeTexts = {
+      de: ['Gemütlich', 'Mitten in der Altstadt', 'Bier & Cocktails', 'Jeden Tag geöffnet', 'Gemischtes Publikum', 'Fein selektierte Spirituosen aus aller Welt', 'Comics', 'Spiele', 'Entspannt', 'Herzlich', 'Lebendig', 'Unkompliziert', 'Mo – Kölsch', 'Di – Gin Tonic', 'Mi – Negroni', 'Do – Whiskey Sour', 'Fr – Dark \'n\' Stormy', 'Sa – Cuba Libre', 'So – Moscow Mule', 'Weine & Spritzer', 'Eigene Limonade', 'Kaffeespezialitäten', 'Kopfsteinpflaster vor der Tür', 'Gutes Glas in der Hand'],
+      en: ['Cozy', 'In the heart of the old town', 'Beer & Cocktails', 'Open every day', 'Mixed crowd', 'Carefully selected spirits from around the world', 'Comics', 'Games', 'Relaxed', 'Cordial', 'Lively', 'Uncomplicated', 'Mon – Kölsch', 'Tue – Gin Tonic', 'Wed – Negroni', 'Thu – Whiskey Sour', 'Fri – Dark \'n\' Stormy', 'Sat – Cuba Libre', 'Sun – Moscow Mule', 'Wines & Spritzers', 'House Lemonade', 'Coffee Specialties', 'Cobblestones at the door', 'A good glass in hand']
+    };
+
     const i18n = {
       de: {
         'nav.bar': 'Die Bar',
@@ -1663,12 +1670,20 @@
           const key = el.getAttribute('data-i18n');
           const text = i18n[currentLang][key];
           if (text) {
-            if (key.includes('title') || key.includes('lead') || key.includes('desc') || key.includes('coffee')) {
+            if (key.includes('title') || key.includes('lead') || key.includes('desc') || key.includes('coffee') || key.includes('cta')) {
               el.innerHTML = text;
             } else {
               el.textContent = text;
             }
           }
+        });
+
+        // Update marquee texts
+        const marqueeSpans = document.querySelectorAll('.marquee-track span');
+        const texts = marqueeTexts[currentLang];
+        marqueeSpans.forEach((span, idx) => {
+          const textIdx = idx % texts.length;
+          span.textContent = texts[textIdx];
         });
       }
 
