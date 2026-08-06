@@ -1692,6 +1692,7 @@
       // Initial setup
       updateTexts();
       updateButtons();
+      document.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang: currentLang } }));
     })();
   </script>
 
