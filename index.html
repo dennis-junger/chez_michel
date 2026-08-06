@@ -632,17 +632,29 @@
       border-top: 1px solid var(--line);
     }
 
-    .day-offer img {
+    .day-offer-media {
       width: clamp(220px, 30vw, 360px);
       aspect-ratio: 3/4;
-      object-fit: cover;
-      object-position: center top;
-      border-radius: 2px;
+      border-radius: 10px;
       border: 1px solid rgba(217, 165, 33, .55);
       outline: 1px solid rgba(217, 165, 33, .25);
       outline-offset: 6px;
       box-shadow: var(--e3);
+      overflow: hidden;
+    }
+
+    .day-offer img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
       filter: contrast(1.1) saturate(1.08) sepia(.08);
+      transition: transform .7s var(--ease);
+    }
+
+    .day-offer-media:hover img {
+      transform: scale(1.05);
     }
 
     .day-offer h3 {
@@ -1147,7 +1159,7 @@
         grid-template-columns: 1fr;
       }
 
-      .day-offer img {
+      .day-offer-media {
         width: 100%;
         aspect-ratio: 3/4;
         max-height: 420px;
@@ -1191,6 +1203,7 @@
       <nav class="links">
         <a class="hide-sm" href="#ort">Die Bar</a>
         <a class="hide-sm" href="#heute">Heute</a>
+        <a class="hide-sm" href="#karte">Karte</a>
         <a class="hide-sm" href="#finden">Finden</a>
         <a class="hide-sm" href="impressum.html">Impressum</a>
         <a class="nav-route"
@@ -1318,8 +1331,10 @@
         </figure>
       </div>
 
-      <div class="day-offer reveal" id="tagesangebot">
-        <img id="day-offer-img" src="img/mo.jpg" alt="" />
+      <div class="day-offer reveal" id="heute">
+        <div class="day-offer-media">
+          <img id="day-offer-img" src="img/mo.jpg" alt="" />
+        </div>
         <div>
           <span class="eyebrow" id="day-offer-eyebrow">Heute</span>
           <h3 class="serif"><span class="day" id="day-offer-day">Montag</span> <span id="day-offer-title">– Angebot des Tages</span></h3>
@@ -1356,7 +1371,7 @@
   </section>
 
   <!-- COMIC ACCENT -->
-  <section class="comic-section">
+  <section class="comic-section" id="karte">
     <div class="wrap">
       <div class="comic-frame">
         <div class="comic">
