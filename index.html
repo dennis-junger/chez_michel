@@ -1397,22 +1397,23 @@
           // title/text sind optionale Ergänzungen und können pro Tag
           // angepasst werden.
           var days = [
-            { key: "so", name: "Sonntag",     title: "– Moscow Mule",    text: { de: "Ingwerbier, Wodka, Limette. Der richtige Abschluss für das Wochenende.", en: "Ginger beer, vodka, lime. The perfect way to end the weekend." } },
-            { key: "mo", name: "Montag",      title: "– Kölsch",         text: { de: "Frisch gezapft, kühl serviert. Der beste Start in die Woche.", en: "Freshly poured, chilled. The perfect start to the week." } },
-            { key: "di", name: "Dienstag",    title: "– Gin Tonic",      text: { de: "Fein selektierter Gin, hochwertiges Tonic. Simpel, elegant, unschlagbar.", en: "Carefully selected gin, premium tonic. Simple, elegant, unbeatable." } },
-            { key: "mi", name: "Mittwoch",   title: "– Negroni",        text: { de: "Gin, Campari, Wermut. Ein Klassiker, der nicht lügt.", en: "Gin, Campari, vermouth. A classic that never lies." } },
-            { key: "do", name: "Donnerstag",  title: "– Whiskey Sour",   text: { de: "Bourbon, frischer Zitronensaft, ein Hauch Sirup. Rund und charakterstark.", en: "Bourbon, fresh lemon juice, a hint of syrup. Round and full of character." } },
-            { key: "fr", name: "Freitag",     title: "– Dark 'n' Stormy", text: { de: "Dunkler Rum, Ingwerbier, Limette. Willkommen im Wochenende.", en: "Dark rum, ginger beer, lime. Welcome to the weekend." } },
-            { key: "sa", name: "Samstag",     title: "– Cuba Libre",     text: { de: "Rum, Cola, Limette. Für die lange Nacht.", en: "Rum, cola, lime. For the long night." } }
+            { key: "so", name: { de: "Sonntag", en: "Sunday" },     title: "– Moscow Mule",    text: { de: "Ingwerbier, Wodka, Limette. Der richtige Abschluss für das Wochenende.", en: "Ginger beer, vodka, lime. The perfect way to end the weekend." } },
+            { key: "mo", name: { de: "Montag", en: "Monday" },      title: "– Kölsch",         text: { de: "Frisch gezapft, kühl serviert. Der beste Start in die Woche.", en: "Freshly poured, chilled. The perfect start to the week." } },
+            { key: "di", name: { de: "Dienstag", en: "Tuesday" },    title: "– Gin Tonic",      text: { de: "Fein selektierter Gin, hochwertiges Tonic. Simpel, elegant, unschlagbar.", en: "Carefully selected gin, premium tonic. Simple, elegant, unbeatable." } },
+            { key: "mi", name: { de: "Mittwoch", en: "Wednesday" },   title: "– Negroni",        text: { de: "Gin, Campari, Wermut. Ein Klassiker, der nicht lügt.", en: "Gin, Campari, vermouth. A classic that never lies." } },
+            { key: "do", name: { de: "Donnerstag", en: "Thursday" },  title: "– Whiskey Sour",   text: { de: "Bourbon, frischer Zitronensaft, ein Hauch Sirup. Rund und charakterstark.", en: "Bourbon, fresh lemon juice, a hint of syrup. Round and full of character." } },
+            { key: "fr", name: { de: "Freitag", en: "Friday" },     title: "– Dark 'n' Stormy", text: { de: "Dunkler Rum, Ingwerbier, Limette. Willkommen im Wochenende.", en: "Dark rum, ginger beer, lime. Welcome to the weekend." } },
+            { key: "sa", name: { de: "Samstag", en: "Saturday" },     title: "– Cuba Libre",     text: { de: "Rum, Cola, Limette. Für die lange Nacht.", en: "Rum, cola, lime. For the long night." } }
           ];
           var today = days[new Date().getDay()];
           document.getElementById("day-offer-img").src = "img/" + today.key + ".jpg";
-          document.getElementById("day-offer-img").alt = "Angebot des Tages: " + today.name;
-          document.getElementById("day-offer-day").textContent = today.name;
-          document.getElementById("day-offer-title").textContent = today.title;
 
           function updateDayOfferText() {
             var lang = localStorage.getItem('lang') || 'de';
+            var dayName = typeof today.name === 'string' ? today.name : today.name[lang];
+            document.getElementById("day-offer-img").alt = "Angebot des Tages: " + dayName;
+            document.getElementById("day-offer-day").textContent = dayName;
+            document.getElementById("day-offer-title").textContent = today.title;
             document.getElementById("day-offer-text").textContent = today.text[lang];
           }
           updateDayOfferText();
