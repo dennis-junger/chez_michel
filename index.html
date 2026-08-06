@@ -515,6 +515,37 @@
     }
 
     /* ============ ORT ============ */
+    .ort {
+      background: var(--night);
+      position: relative;
+    }
+
+    .ort::before,
+    .ort::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--brass) 12%, var(--brass) 88%, transparent);
+      opacity: .55;
+    }
+
+    .ort::before {
+      top: 0;
+    }
+
+    .ort::after {
+      bottom: 0;
+    }
+
+    .ort .wrap {
+      border: 1px solid rgba(217, 165, 33, .55);
+      outline: 1px solid rgba(217, 165, 33, .28);
+      outline-offset: 7px;
+      padding: clamp(28px, 5vw, 62px);
+    }
+
     .ort-grid {
       display: grid;
       grid-template-columns: 1.1fr .9fr;
@@ -523,15 +554,23 @@
     }
 
     .ort p {
-      color: var(--ink-2);
+      color: var(--cream);
       max-width: 52ch;
+    }
+
+    .ort .eyebrow {
+      color: var(--brass);
+    }
+
+    .ort .head {
+      color: var(--cream);
     }
 
     .ort .first {
       font-family: "Fraunces", serif;
       font-style: italic;
       font-size: var(--fs-lead);
-      color: var(--ink);
+      color: var(--cream);
       margin-top: 18px;
     }
 
@@ -562,6 +601,18 @@
       color: var(--gold);
     }
 
+    .ort .chip {
+      color: var(--brass);
+      border: 1px solid rgba(217, 165, 33, .5);
+      background: rgba(217, 165, 33, .08);
+    }
+
+    .ort .chip:hover {
+      color: var(--cream);
+      border-color: var(--brass);
+      background: rgba(217, 165, 33, .15);
+    }
+
     .sign-wrap {
       margin: 0;
       text-align: center;
@@ -587,6 +638,10 @@
       letter-spacing: .14em;
       font-size: .78rem;
       font-weight: 600;
+    }
+
+    .ort .sign-wrap figcaption {
+      color: var(--cream);
       color: var(--ink-3);
     }
 
